@@ -1,8 +1,22 @@
+from time import sleep
+def limpar_tela():
+    import os
+    os.system('cls' if os.name=='nt'else 'clear')
+
+def linha(tam=50):
+    print('-'*tam)
+
+def cabecalho(msg):
+    linha()
+    print(msg)
+    linha()
+
 def balanco():
     from openpyxl import Workbook, load_workbook
     from time import sleep
     extrato = [[], []]
     while True:
+        cabecalho('Escolha o tipo de operação')
         while True:
             tipo = str(input("Tipo de Operação [D ou C]: ")).strip().upper()[0]
             if tipo not in 'DC':
@@ -16,16 +30,16 @@ def balanco():
         resp = str(input('Quer Continuar ?(S/N) ')).strip().upper()[0]
         if resp in 'Nn':
             break
-    print('=*' * 15)
-    print('Créditos Digitados: ')
+    linha()
+    limpar_tela()
+    cabecalho('Créditos Digitados: ')
     for i, credito in enumerate(extrato[0]):
         print(f'{i} ==> R$ {credito:.2f}')
     sleep(0.3)
-    print('=*' * 15)
-    print('Débitos Digitados: ')
+    cabecalho('Débitos Digitados: ')
     for j, debito in enumerate(extrato[1]):
         print(f'{j} ==> R$ {debito:.2f}')
-    print('=*' * 15)
+    linha()
     sleep(0.3)
     datainicial = str(input('Digite data (dd/mm/aaaa): ')).strip()
     if len(extrato[0]) == 0:
@@ -54,6 +68,8 @@ def balanco():
     return
 def despesas():
     from openpyxl import Workbook, load_workbook
+    limpar_tela()
+    cabecalho('Entre com os lançamentos de Débitos e Créditos ')
     while True:
         descricao = str(input('Digite a descrição do lançamento: ')).strip().upper()
         data = str(input('Digite a Data do lançamento (dd/mm/aaaa): ')).strip()
@@ -78,6 +94,8 @@ def despesas():
             print('Registro não gravado na planilha.')
         resp = str(input('Quer fazer novo lançamento ? (S/N) ')).strip().upper()[0]
         if resp in 'N':
-            print('Obrigado pela Colaboração !')
+            cabecalho('Obrigado pela Colaboração !')
+            sleep(0.5)
+            limpar_tela()
             break
     return

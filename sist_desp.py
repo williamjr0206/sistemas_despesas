@@ -1,7 +1,8 @@
 from biblioteca import interface,funcoes
-interface.cabecalho('*** Sistema de Despesas - versão: 1.0 ***')
+interface.limpar_tela()
+interface.cabecalho('*** Sistema de Lançamentos - versão: 1.0 ***')
 while True:
-    n = interface.menu(['Lançar Balanço','Lançar Despesas', 'Finalizar'])
+    n = interface.menu(['Lançar Balanço','Lançar Créditos e Débitos', 'Finalizar'])
     if n ==1:
         funcoes.balanco()
     elif n == 2:

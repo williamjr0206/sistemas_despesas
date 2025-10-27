@@ -1,3 +1,7 @@
+def limpar_tela():
+    import os
+    os.system('cls' if os.name=='nt'else 'clear')
+
 def linha(tam=50):
     print('-'*tam)
 
