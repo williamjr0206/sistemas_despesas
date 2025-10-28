@@ -30,7 +30,7 @@ def balanco():
         resp = str(input('Quer Continuar ?(S/N) ')).strip().upper()[0]
         if resp in 'Nn':
             break
-    linha()
+    print('-'*50)
     limpar_tela()
     cabecalho('Créditos Digitados: ')
     for i, credito in enumerate(extrato[0]):
@@ -39,7 +39,7 @@ def balanco():
     cabecalho('Débitos Digitados: ')
     for j, debito in enumerate(extrato[1]):
         print(f'{j} ==> R$ {debito:.2f}')
-    linha()
+    print('-'*50)
     sleep(0.3)
     datainicial = str(input('Digite data (dd/mm/aaaa): ')).strip()
     if len(extrato[0]) == 0:
