@@ -66,7 +66,7 @@ def balanco():
     else:
         print('Registro adicionado com sucesso !')
     return
-def despesas():
+def despesas(msg="WILLIAM"):
     from openpyxl import Workbook, load_workbook
     limpar_tela()
     cabecalho('Entre com os lançamentos de Débitos e Créditos ')
@@ -79,6 +79,7 @@ def despesas():
         if opcao in 'S':
             wb = load_workbook(r"G:\Meu Drive\despesas\despesas.xlsx")
             ws = wb.active
+            ws = wb[msg]
             linha = ws.max_row
             ws.cell(row=linha + 1, column=1, value=data)
             ws.cell(row=linha + 1, column=2, value=descricao)

@@ -2,12 +2,14 @@ from biblioteca import interface,funcoes
 interface.limpar_tela()
 interface.cabecalho('*** Sistema de Lançamentos - versão: 1.0 ***')
 while True:
-    n = interface.menu(['Lançar Balanço','Lançar Créditos e Débitos', 'Finalizar'])
+    n = interface.menu(['Lançar Balanço','Lançar Créditos e Débitos em William','Lançar Créditos e Débitos em Zenilda', 'Finalizar'])
     if n ==1:
         funcoes.balanco()
     elif n == 2:
         funcoes.despesas()
     elif n == 3:
+        funcoes.despesas("ZENILDA")
+    elif n == 4:
        interface.cabecalho('Saindo do Sistema...')
        break
     else:
