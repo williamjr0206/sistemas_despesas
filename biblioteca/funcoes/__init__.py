@@ -16,6 +16,7 @@ def balanco():
     from time import sleep
     extrato = [[], []]
     while True:
+        limpar_tela()
         cabecalho('Escolha o tipo de operação')
         while True:
             tipo = str(input("Tipo de Operação [D ou C]: ")).strip().upper()[0]
@@ -27,10 +28,11 @@ def balanco():
             extrato[1].append(float(input('Digite o Valor do Débito: R$ ')))
         elif tipo in 'C':
             extrato[0].append(float(input('Digite o valor do Crédito: R$ ')))
+        linha()
         resp = str(input('Quer Continuar ?(S/N) ')).strip().upper()[0]
         if resp in 'Nn':
             break
-    print('-'*50)
+    linha()
     limpar_tela()
     cabecalho('Créditos Digitados: ')
     for i, credito in enumerate(extrato[0]):
@@ -51,21 +53,29 @@ def balanco():
     else:
         saidas = sum(extrato[1])
     balanco = entradas - saidas
-    print(f'{saidas} -> {entradas} -> {balanco}')
-    wb = load_workbook(r"G:\Meu Drive\despesas\balanco.xlsx")
-    ws = wb.active
-    linha = ws.max_row
-    ws.cell(row=linha + 1, column=1, value=datainicial)
-    ws.cell(row=linha + 1, column=2, value=entradas)
-    ws.cell(row=linha + 1, column=3, value=saidas)
-    ws.cell(row=linha + 1, column=4, value=balanco)
-    try:
-        wb.save(r"G:\Meu Drive\despesas\balanco.xlsx")
-    except:
-        print('Erro ao gravar arquivo.')
+    print(f'{entradas} -> {saidas} -> {balanco}')
+    opcao = str(input('Deseja gravar na panilha ? (S/N) ')).strip().upper()[0]
+    if opcao in 'Ss':
+        wb = load_workbook(r"G:\Meu Drive\despesas\balanco.xlsx")
+        ws = wb.active
+        linha1 = ws.max_row
+        ws.cell(row=linha1 + 1, column=1, value=datainicial)
+        ws.cell(row=linha1 + 1, column=2, value=entradas)
+        ws.cell(row=linha1 + 1, column=3, value=saidas)
+        ws.cell(row=linha1 + 1, column=4, value=balanco)
+        try:
+            wb.save(r"G:\Meu Drive\despesas\balanco.xlsx")
+        except:
+            print('Erro ao gravar arquivo.')
+        else:
+            print('Registro adicionado com sucesso !')
+
     else:
-        print('Registro adicionado com sucesso !')
+        print('Registro não gravado na planilha !')
+    sleep(0.5)
+    limpar_tela()
     return
+
 def despesas(msg="WILLIAM"):
     from openpyxl import Workbook, load_workbook
     limpar_tela()
@@ -80,11 +90,11 @@ def despesas(msg="WILLIAM"):
             wb = load_workbook(r"G:\Meu Drive\despesas\despesas.xlsx")
             ws = wb.active
             ws = wb[msg]
-            linha = ws.max_row
-            ws.cell(row=linha + 1, column=1, value=data)
-            ws.cell(row=linha + 1, column=2, value=descricao)
-            ws.cell(row=linha + 1, column=3, value=valor)
-            ws.cell(row=linha + 1, column=4, value=status)
+            linha1 = ws.max_row
+            ws.cell(row=linha1 + 1, column=1, value=data)
+            ws.cell(row=linha1 + 1, column=2, value=descricao)
+            ws.cell(row=linha1 + 1, column=3, value=valor)
+            ws.cell(row=linha1 + 1, column=4, value=status)
             try:
                 wb.save(r"G:\Meu Drive\despesas\despesas.xlsx")
             except:
