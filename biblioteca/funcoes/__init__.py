@@ -80,7 +80,7 @@ def despesas(msg="WILLIAM"):
     from openpyxl import Workbook, load_workbook
     limpar_tela()
     while True:
-        cabecalho('Entre com os lançamentos de Débitos e Créditos ')
+        cabecalho(f'Entre com os lançamentos de Débitos e Créditos de: {msg}. ')
         descricao = str(input('Digite a descrição do lançamento: ')).strip().upper()
         data = str(input('Digite a Data do lançamento (dd/mm/aaaa): ')).strip()
         valor = float(input('Digite o valor do lançamento: R$ '))
