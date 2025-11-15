@@ -103,7 +103,9 @@ def despesas(msg="WILLIAM"):
                 print('Registro adicionado com sucesso !')
         else:
             print('Registro não gravado na planilha.')
+        linha()
         resp = str(input('Quer fazer novo lançamento ? (S/N) ')).strip().upper()[0]
+        limpar_tela()
         if resp in 'N':
             cabecalho('Obrigado pela Colaboração !')
             sleep(0.5)
