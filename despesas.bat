@@ -1,4 +1,4 @@
 cd\
-cd code\workspace\cursoemvideo\exercicios\sistemas_despesas
+cd code\workspace\sistemas_despesas\
 python sist_desp.py
 cd\
