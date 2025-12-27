@@ -175,4 +175,5 @@ def abrePowerBI(msg="DESPESAS"):
         print('Opção não encontrada !')
         return False
     subprocess.run([caminho_power_bi, arquivo_pbix])
+    limpar_tela()
     return
